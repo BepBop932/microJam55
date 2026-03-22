@@ -3,10 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://dv6tpawcfftib" path="res://icon.svg" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://c4vptn7abr3np" path="res://scripts/main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c77komqekjn30" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://d0bfc2tbs6yoo" path="res://textbox.tscn" id="2_lquwl"]
 [ext_resource type="PackedScene" uid="uid://bl6lj42i1ibga" path="res://front_door.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D" unique_id=676531004]
 script = ExtResource("1_1bvp3")
+
+[node name="textbox" parent="." unique_id=1158121610 instance=ExtResource("2_lquwl")]
 
 [node name="player" parent="." unique_id=1608103750 instance=ExtResource("2_0xm2m")]
 
