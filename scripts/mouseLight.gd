@@ -21,7 +21,6 @@ func _process(delta: float) -> void:
 	
 	enabled = lightToggle
 
-
 func _input(event: InputEvent) -> void:
 	if cd == false:
 		if Input.is_action_just_pressed("click"):

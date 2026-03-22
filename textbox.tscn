@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://d0bfc2tbs6yoo"]
+
+[ext_resource type="Script" uid="uid://bg8njk45bhlqf" path="res://scripts/textbox.gd" id="1_ptcjm"]
+[ext_resource type="FontFile" uid="uid://14mefh1dxk0i" path="res://fonts/rawrote.demo.ttf" id="1_vng66"]
+
+[sub_resource type="GDScript" id="GDScript_ptcjm"]
+script/source = "extends MarginContainer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us7u2"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="textbox" type="CanvasLayer" unique_id=1158121610]
+script = ExtResource("1_ptcjm")
+
+[node name="TextboxContainer" type="MarginContainer" parent="." unique_id=1842049922]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -233.0
+offset_right = 5.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+script = SubResource("GDScript_ptcjm")
+
+[node name="Panel" type="Panel" parent="TextboxContainer" unique_id=1450926490]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_us7u2")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextboxContainer" unique_id=514191097]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextboxContainer/MarginContainer" unique_id=765390976]
+layout_mode = 2
+
+[node name="Start" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer" unique_id=581128922]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_vng66")
+theme_override_font_sizes/font_size = 50
+text = " × "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer" unique_id=1998135304]
+custom_minimum_size = Vector2(1050, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("1_vng66")
+theme_override_font_sizes/font_size = 50
+text = "WORK GOD FUCKING DAMN IT
+WORK GOD FUCKING DAMN IT"
+autowrap_mode = 1
+
+[node name="End" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer" unique_id=1812613884]
+custom_minimum_size = Vector2(52, 52)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_vng66")
+theme_override_font_sizes/font_size = 50
+text = " × "
