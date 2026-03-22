@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if cd == false:
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_action_just_pressed("click"):
 			lightToggle = not lightToggle
 			cd = true
 			get_tree().create_timer(0.1).timeout.connect(func(): cd = false)

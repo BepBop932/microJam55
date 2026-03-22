@@ -24,7 +24,7 @@ texture = ExtResource("1_0xm2m")
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=827412324]
 color = Color(0.5069202, 0.5069202, 0.5069202, 1)
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=910515337]
+[node name="flashlight" type="PointLight2D" parent="." unique_id=910515337]
 position = Vector2(17, -31)
 scale = Vector2(4, 4)
 texture = SubResource("GradientTexture2D_lquwl")
