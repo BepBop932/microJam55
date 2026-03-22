@@ -17,7 +17,9 @@ func _process(delta: float) -> void:
 		energy = randf_range(0.95,1.05)
 		timeUp = 0
 	
-	global_position = get_global_mouse_position()
+	#global_position = get_global_mouse_position()
+	var pos = create_tween()
+	pos.tween_property(self,"position", get_global_mouse_position(), 0.2)
 	
 	enabled = lightToggle
 

@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bg8njk45bhlqf" path="res://scripts/textbox.gd" id="1_ptcjm"]
 [ext_resource type="FontFile" uid="uid://14mefh1dxk0i" path="res://fonts/rawrote.demo.ttf" id="1_vng66"]
+[ext_resource type="FontFile" uid="uid://dm4onjh6i0lc3" path="res://fonts/LexendDecaRegular.ttf" id="3_4fg7c"]
+[ext_resource type="Script" uid="uid://d0dqglxy0nvr6" path="res://scripts/customBBcodeEffects/scary.gd" id="4_88vyv"]
+[ext_resource type="Script" uid="uid://dg0ebko7nairf" path="res://scripts/customBBcodeEffects/fun.gd" id="6_k5ndg"]
 
 [sub_resource type="GDScript" id="GDScript_ptcjm"]
 script/source = "extends MarginContainer
@@ -13,7 +16,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 "
 
@@ -34,6 +37,38 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="RichTextEffect" id="RichTextEffect_b4wmp"]
+script = ExtResource("4_88vyv")
+metadata/_custom_type_script = "uid://d0dqglxy0nvr6"
+
+[sub_resource type="GDScript" id="GDScript_b4wmp"]
+script/source = "@tool
+extends RichTextEffect
+class_name gradient
+
+var bbcode = \"gradient\"
+
+func _process_custom_fx(char_fx: CharFXTransform):
+	var SC1 = char_fx.env.get(\"SC1\", 1.0)
+	var EC1 = char_fx.env.get(\"EC1\", 0.1)
+	var SC2 = char_fx.env.get(\"SC2\", 1.0)
+	var EC2 = char_fx.env.get(\"EC2\", 0.1)
+	var SC3 = char_fx.env.get(\"SC3\", 1.0)
+	var EC3 = char_fx.env.get(\"EC3\", 0.1)
+	
+	char_fx.color.r = SC1 - EC1 * char_fx.relative_index
+	char_fx.color.g = SC2 - EC2 * char_fx.relative_index
+	char_fx.color.b = SC3 - EC3 * char_fx.relative_index
+	pass
+"
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_bx1jh"]
+script = SubResource("GDScript_b4wmp")
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_55v5i"]
+script = ExtResource("6_k5ndg")
+metadata/_custom_type_script = "uid://dg0ebko7nairf"
+
 [node name="textbox" type="CanvasLayer" unique_id=1158121610]
 script = ExtResource("1_ptcjm")
 
@@ -43,7 +78,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -5.0
-offset_top = -233.0
+offset_top = -180.0
 offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -80,21 +115,29 @@ text = " × "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer" unique_id=1998135304]
-custom_minimum_size = Vector2(1050, 0)
+[node name="RichTextLabel" type="RichTextLabel" parent="TextboxContainer/MarginContainer/HBoxContainer" unique_id=1824332664]
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("1_vng66")
-theme_override_font_sizes/font_size = 50
-text = "WORK GOD FUCKING DAMN IT
-WORK GOD FUCKING DAMN IT"
-autowrap_mode = 1
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("3_4fg7c")
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+bbcode_enabled = true
+text = "[color=red]why does this fucking a shit not a fuckinggg a work[/color] RAHHHH "
+scroll_active = false
+scroll_following = true
+scroll_following_visible_characters = true
+autowrap_mode = 2
+custom_effects = [SubResource("RichTextEffect_b4wmp"), SubResource("RichTextEffect_bx1jh"), SubResource("RichTextEffect_55v5i")]
+visible_characters_behavior = 1
 
 [node name="End" type="Label" parent="TextboxContainer/MarginContainer/HBoxContainer" unique_id=1812613884]
 custom_minimum_size = Vector2(52, 52)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("1_vng66")
 theme_override_font_sizes/font_size = 50
