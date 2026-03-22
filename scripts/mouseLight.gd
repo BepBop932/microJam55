@@ -1,10 +1,24 @@
 extends PointLight2D
+
 var lightToggle = true
 var cd = false
 
+var timeToDo = 0.075
+var timeUp = 0.0
+
+func _ready() -> void:
+	randomize()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	timeUp += delta
+	if timeUp >= timeToDo:
+		# flicker
+		energy = randf_range(0.95,1.05)
+		timeUp = 0
+	
 	global_position = get_global_mouse_position()
+	
 	enabled = lightToggle
 
 
